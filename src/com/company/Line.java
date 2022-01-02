@@ -33,7 +33,7 @@ public class Line {
 
     public boolean isPointOnLine(Point point){
         if (point == null) return false;
-        return this.startPoint.distance(this.endPoint) + this.endPoint.distance(this.startPoint) == this.length();
+        return this.startPoint.distance(point) + this.endPoint.distance(point) == this.length();
     }
 
     public Point getStartPoint() {
