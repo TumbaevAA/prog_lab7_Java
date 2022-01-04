@@ -48,4 +48,10 @@ public class Point {
     public float getY() {
         return y;
     }
+
+    public static float distanceToOrigin(Point p){
+        Point origin = new Point(0,0);
+        return origin.distance(p);
+    }
+
 }
