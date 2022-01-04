@@ -12,7 +12,11 @@ public class Main {
         System.out.println("\nDistance to origin = " + Point.distanceToOrigin(p));
 
 
-
+        System.out.println("Id generation with static field");
+        Point p1 = new Point(1,1), p2 = new Point(2,2), p3 = new Point(3,3);
+        p1.output();
+        p2.output();
+        p3.output();
 
     }
 }

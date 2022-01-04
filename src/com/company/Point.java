@@ -4,10 +4,17 @@ import java.util.Scanner;
 
 public class Point {
     private float x, y;
+    private int id;
+    private static int count = 0;
 
-    public Point(){}
+    public Point(){
+        count++;
+        id = count;
+    }
 
     public Point(float x, float y){
+        count ++;
+        id = count;
         this.x = x;
         this.y = y;
     }
@@ -31,7 +38,7 @@ public class Point {
     }
 
     public void output(){
-        System.out.printf("\nx = %f, y = %f", this.x, this.y);
+        System.out.printf("\nx = %f, y = %f, id = %d", this.x, this.y, this.id);
     }
 
     public float distance(Point end){
