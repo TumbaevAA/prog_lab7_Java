@@ -6,20 +6,24 @@ public class Circle {
     private Point center;
     private float radius;
 
-    public boolean init(Point center, float radius){
-        if (center == null && radius <= 0) return false;
+    public Circle(){
+    }
 
+    public Circle(Point center, float radius){
         this.center = center;
         this.radius = radius;
-
-        return  true;
     }
+
 
     public boolean input(){
         Scanner scanner = new Scanner(System.in);
         Point center = new Point();
         float radius;
-        if (center.input() && scanner.hasNextFloat()) return this.init(center, scanner.nextFloat());
+        if (center.input() && scanner.hasNextFloat()){
+            this.radius = scanner.nextFloat();
+            this.center = center;
+            return true;
+        }
 
         return false;
     }

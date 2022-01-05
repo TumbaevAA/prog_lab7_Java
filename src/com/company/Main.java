@@ -39,5 +39,12 @@ public class Main {
         s1.input();
         s1.output();
 
+        System.out.println("\n\n\nCircle constructor test");
+        Circle c = new Circle(p, 3), c1 = new Circle();
+        c.output();
+        System.out.println("\nEnter center and radius of the circle");
+        c1.input();
+        c1.output();
+
     }
 }
