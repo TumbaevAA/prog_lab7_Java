@@ -5,7 +5,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Point constructor test");
+        System.out.println("Array init test");
+        Point[] pointArr = {new Point(1), new Point(2), new Point(3)};
+        for (Point p:pointArr) {
+            System.out.println("\nInput coordinates of the point");
+            p.input();
+            p.output();
+        }
+
+
+        System.out.println("\n\n\nPoint constructor test");
         Point p = new Point(0,0), p1 = new Point(1234), p2 = new Point();
         p.output();
         System.out.println("\nEnter coordinates of the second point");
@@ -43,8 +52,9 @@ public class Main {
         Circle c = new Circle(p, 3), c1 = new Circle();
         c.output();
         System.out.println("\nEnter center and radius of the circle");
-        c1.input();
         c1.output();
+
+
 
     }
 }
