@@ -30,6 +30,14 @@ public class Main {
         t1.input();
         t1.output();
 
+        System.out.println("\n\n\nSquare constructor test");
+        Point pForSquare1 = new Point(0,0), pForSquare2 = new Point(1,0), pForSquare3 = new Point(1,1),
+                pForSquare4 = new Point(0,1);
+        Square s = new Square(pForSquare1, pForSquare2, pForSquare3, pForSquare4), s1 = new Square();
+        s.output();
+        System.out.println("\nEnter first, second, third and fourth points of the square");
+        s1.input();
+        s1.output();
 
     }
 }

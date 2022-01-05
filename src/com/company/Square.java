@@ -5,28 +5,30 @@ public class Square {
 
     public Square(){}
 
-    public boolean init(Point first, Point second, Point third, Point fourth){
-        if (first == null || second == null || third == null || fourth == null) return false;
+    public Square(Point first, Point second, Point third, Point fourth){
         float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(fourth), d4 = fourth.distance(first);
 
-        if (d1 == 0 || d2 == 0 || d3 == 0 || d4 == 0 ||                              //Если какие-то точки совпадают, возвращаем false
+        if (d1 == 0 || d2 == 0 || d3 == 0 || d4 == 0 ||                     //Если какие-то точки совпадают - не инициализируем
                 first.distance(third) == 0 || second.distance(fourth) == 0 ||
-                d1 != d3 || d1 != d4 || d2 != d3 || d2 != d4) {   //Если стороны не равны, возвращаем false
-            return false;
+                d1 != d3 || d1 != d4 || d2 != d3 || d2 != d4) {}            //Если стороны не равны - не инициализируем
+        else{
+            this.firstPoint = first;
+            this.secondPoint = second;
+            this.thirdPoint = third;
+            this.fourthPoint = fourth;
         }
-
-        this.firstPoint = first;
-        this.secondPoint = second;
-        this.thirdPoint = third;
-        this.fourthPoint = fourth;
-
-        return true;
     }
 
     public  boolean input(){
         Point first = new Point(), second = new Point(), third = new Point(), fourth = new Point();
         if (first.input() && second.input() && third.input() && fourth.input())
-            return this.init(first, second, third, fourth);
+        {
+            this.firstPoint = first;
+            this.secondPoint = second;
+            this.thirdPoint = third;
+            this.fourthPoint = fourth;
+            return true;
+        }
 
         return false;
     }
