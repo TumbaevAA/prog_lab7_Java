@@ -5,16 +5,17 @@ public class Line {
 
     Line(){}
 
-    public boolean init(Point start, Point end){
-        if (start == null || end == null) return false;
+    Line(Point start, Point end){
         this.startPoint = start;
         this.endPoint = end;
-        return true;
     }
 
     public boolean input(){
         Point start = new Point(), end = new Point();
-        if (start.input() && end.input()) this.init(start,end);
+        if (start.input() && end.input()){
+            this.startPoint = start;
+            this.endPoint = start;
+        }
         return false;
     }
 

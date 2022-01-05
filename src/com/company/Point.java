@@ -7,6 +7,13 @@ public class Point {
     private int id;
     private static int count = 0;
 
+    /*Id нельзя назначать через параметр.
+    Конструктор только демонстрирует работу конструктора
+    с одни параметром*/
+    public Point(int id){
+        this.id = id;
+    }
+
     public Point(){
         count++;
         id = count;
