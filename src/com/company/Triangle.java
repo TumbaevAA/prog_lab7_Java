@@ -5,25 +5,26 @@ public class Triangle {
 
     Triangle(){}
 
-    public boolean init(Point first, Point second, Point third){
-        if (first == null || second == null || third == null) return false;
+    Triangle(Point first, Point second, Point third){
         float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(first);
-        if (d1 == 0 || d2 == 0 || d3 == 0 ||                       //Если какие-то точки совпадают, возвращаем false
-                d1 == d2 + d3 || d2 == d1 + d3 || d3 == d1 + d2) { //Если точка лежит на отрезке между двумя другими - false
-            return false;
+        if (d1 == 0 || d2 == 0 || d3 == 0 ||                       //Если какие-то точки совпадают - не инициализируем
+                d1 == d2 + d3 || d2 == d1 + d3 || d3 == d1 + d2) {} //Если точка лежит на отрезке между двумя другими - не инициализируем
+        else{
+            this.firstPoint = first;
+            this.secondPoint = second;
+            this.thirdPoint = third;
         }
-
-        this.firstPoint = first;
-        this.secondPoint = second;
-        this.thirdPoint = third;
-
-        return true;
     }
 
     public boolean input(){
         Point first = new Point(), second = new Point(), third = new Point();
         if (first.input() && second.input() && third.input())
-            return this.init(first, second, third);
+        {
+            this.firstPoint = first;
+            this.secondPoint = second;
+            this.thirdPoint = third;
+            return true;
+        }
 
         return false;
     }
@@ -73,7 +74,7 @@ public class Triangle {
     public float area(){
         float semiPerimeter = this.perimeter() / 2;
         return (float) Math.sqrt(semiPerimeter * (semiPerimeter - this.lineLength(1)) *
-                (semiPerimeter - this.lineLength(2) * (semiPerimeter - this.lineLength(3))));
+                (semiPerimeter - this.lineLength(2)) * (semiPerimeter - this.lineLength(3)));
     }
 
     public Point getFirstPoint() {

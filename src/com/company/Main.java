@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Point constructor test");
-        Point p = new Point(3,4), p1 = new Point(1234), p2 = new Point();
+        Point p = new Point(0,0), p1 = new Point(1234), p2 = new Point();
         p.output();
         System.out.println("\nEnter coordinates of the second point");
         p1.input();
@@ -23,6 +23,12 @@ public class Main {
         l1.output();
 
 
+        System.out.println("\n\n\nTriangle constructor test");
+        Triangle t = new Triangle(p,p1,p2), t1 = new Triangle();
+        t.output();
+        System.out.println("\nEnter first, second and third points of the triangle");
+        t1.input();
+        t1.output();
 
 
     }
