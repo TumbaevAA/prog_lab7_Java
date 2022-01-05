@@ -14,7 +14,7 @@ public class Line {
         Point start = new Point(), end = new Point();
         if (start.input() && end.input()){
             this.startPoint = start;
-            this.endPoint = start;
+            this.endPoint = end;
         }
         return false;
     }

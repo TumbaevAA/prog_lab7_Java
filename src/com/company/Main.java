@@ -15,7 +15,12 @@ public class Main {
         p2.input();
         p2.output();
 
-
+        System.out.println("\n\n\nLine constructor test");
+        Line l = new Line(p, p1), l1 = new Line();
+        l.output();
+        System.out.println("\nEnter start and end points of the line");
+        l1.input();
+        l1.output();
 
 
 
