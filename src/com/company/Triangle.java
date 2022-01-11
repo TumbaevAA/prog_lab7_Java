@@ -6,27 +6,34 @@ public class Triangle {
     Triangle(){}
 
     Triangle(Point first, Point second, Point third){
+        if (first == null || second == null || third == null) throw new NullPointerException();
+
         float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(first);
         if (d1 == 0 || d2 == 0 || d3 == 0 ||                       //Если какие-то точки совпадают - не инициализируем
-                d1 == d2 + d3 || d2 == d1 + d3 || d3 == d1 + d2) {} //Если точка лежит на отрезке между двумя другими - не инициализируем
+                d1 == d2 + d3 || d2 == d1 + d3 || d3 == d1 + d2) { //Если точка лежит на отрезке между двумя другими - не инициализируем
+            throw new IllegalArgumentException();
+        }
         else{
             this.firstPoint = first;
             this.secondPoint = second;
             this.thirdPoint = third;
         }
     }
-
     public boolean input(){
-        Point first = new Point(), second = new Point(), third = new Point();
-        if (first.input() && second.input() && third.input())
-        {
+        try {
+            Point first = new Point(), second = new Point(), third = new Point();
+            first.input();
+            second.input();
+            third.input();
             this.firstPoint = first;
             this.secondPoint = second;
             this.thirdPoint = third;
             return true;
         }
-
-        return false;
+        catch (IllegalArgumentException e){
+            System.out.println("Invalid input");
+            return false;
+        }
     }
 
     public void output(){
