@@ -6,17 +6,28 @@ public class Line {
     Line(){}
 
     Line(Point start, Point end){
+        if(start == null || end == null) throw new NullPointerException();
         this.startPoint = start;
         this.endPoint = end;
     }
-
+    public boolean isPointOnLine(Point point){
+        if (point == null) throw new NullPointerException();
+        return this.startPoint.distance(point) + this.endPoint.distance(point) == this.length();
+    }
     public boolean input(){
-        Point start = new Point(), end = new Point();
-        if (start.input() && end.input()){
+        try {
+            Point start = new Point(), end = new Point();
+            start.input();
+            end.input();
             this.startPoint = start;
             this.endPoint = end;
+
+            return true;
+            }
+        catch (IllegalArgumentException e){
+            System.out.println("Invalid input");
+            return false;
         }
-        return false;
     }
 
     public void output(){
@@ -30,11 +41,6 @@ public class Line {
 
     public float length(){
         return this.startPoint.distance(this.endPoint);
-    }
-
-    public boolean isPointOnLine(Point point){
-        if (point == null) return false;
-        return this.startPoint.distance(point) + this.endPoint.distance(point) == this.length();
     }
 
     public Point getStartPoint() {
