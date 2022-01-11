@@ -5,56 +5,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Array init test");
-        Point[] pointArr = {new Point(1), new Point(2), new Point(3)};
-        for (Point p:pointArr) {
-            System.out.println("\nInput coordinates of the point");
-            p.input();
-            p.output();
-        }
-
-
-        System.out.println("\n\n\nPoint constructor test");
-        Point p = new Point(0,0), p1 = new Point(1234), p2 = new Point();
-        p.output();
-        System.out.println("\nEnter coordinates of the second point");
-        p1.input();
-        p1.output();
-        System.out.println("\nEnter coordinates of the third point");
-        p2.input();
-        p2.output();
-
-        System.out.println("\n\n\nLine constructor test");
-        Line l = new Line(p, p1), l1 = new Line();
-        l.output();
-        System.out.println("\nEnter start and end points of the line");
-        l1.input();
-        l1.output();
-
-
-        System.out.println("\n\n\nTriangle constructor test");
-        Triangle t = new Triangle(p,p1,p2), t1 = new Triangle();
-        t.output();
-        System.out.println("\nEnter first, second and third points of the triangle");
-        t1.input();
-        t1.output();
-
-        System.out.println("\n\n\nSquare constructor test");
-        Point pForSquare1 = new Point(0,0), pForSquare2 = new Point(1,0), pForSquare3 = new Point(1,1),
-                pForSquare4 = new Point(0,1);
-        Square s = new Square(pForSquare1, pForSquare2, pForSquare3, pForSquare4), s1 = new Square();
-        s.output();
-        System.out.println("\nEnter first, second, third and fourth points of the square");
-        s1.input();
-        s1.output();
-
-        System.out.println("\n\n\nCircle constructor test");
-        Circle c = new Circle(p, 3), c1 = new Circle();
-        c.output();
-        System.out.println("\nEnter center and radius of the circle");
-        c1.output();
-
-
-
+        //Тест Point
+       try{
+           Point.distanceToOrigin(null);
+       }
+       catch (NullPointerException e){
+           System.out.println("Catching NullPointerException when using distanceToOrigin");
+       }
+       Point p = new Point();
+       try{
+           p.distance(null);
+       }
+       catch (NullPointerException e){
+           System.out.println("Catching NullPointerException when using distance");
+       }
+       try{
+           p.input();
+       }
+       catch (IllegalArgumentException e){
+           System.out.println("Catching IllegalArgumentException when using input");
+       }
     }
 }

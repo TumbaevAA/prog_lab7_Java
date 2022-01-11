@@ -36,24 +36,31 @@ public class Point {
                 return true;
             }
             else{
-                return false;
+                throw new IllegalArgumentException();
             }
         }
         else{
-            return false;
+            throw new IllegalArgumentException();
         }
     }
+    public float distance(Point end){
+        if (end == null) throw new NullPointerException();
+
+        float d1 = end.x - this.x, d2 = end.y - this.y;
+        return (float) Math.sqrt(d1 * d1 + d2 * d2);
+    }
+    public static float distanceToOrigin(Point p){
+        if (p == null) throw new NullPointerException();
+
+        Point origin = new Point(0,0);
+        return origin.distance(p);
+    }
+
 
     public void output(){
         System.out.printf("\nx = %f, y = %f, id = %d", this.x, this.y, this.id);
     }
 
-    public float distance(Point end){
-        if (end == null) return -1;
-
-        float d1 = end.x - this.x, d2 = end.y - this.y;
-        return (float) Math.sqrt(d1 * d1 + d2 * d2);
-    }
 
     public float getX() {
         return x;
@@ -61,11 +68,6 @@ public class Point {
 
     public float getY() {
         return y;
-    }
-
-    public static float distanceToOrigin(Point p){
-        Point origin = new Point(0,0);
-        return origin.distance(p);
     }
 
 }
