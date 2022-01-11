@@ -10,22 +10,28 @@ public class Circle {
     }
 
     public Circle(Point center, float radius){
+        if(center == null) throw new NullPointerException();
         this.center = center;
         this.radius = radius;
     }
-
-
     public boolean input(){
-        Scanner scanner = new Scanner(System.in);
-        Point center = new Point();
-        float radius;
-        if (center.input() && scanner.hasNextFloat()){
-            this.radius = scanner.nextFloat();
-            this.center = center;
-            return true;
+        try {
+            Point center = new Point();
+            center.input();
+            Scanner scanner = new Scanner(System.in);
+            float radius;
+            if (scanner.hasNextFloat()) {
+                radius = scanner.nextFloat();
+                this.center = center;
+                this.radius = radius;
+                return true;
+            }
+            else throw new IllegalArgumentException();
         }
-
-        return false;
+        catch (IllegalArgumentException e){
+            System.out.println("Invalid input");
+            return false;
+        }
     }
 
     public void output(){

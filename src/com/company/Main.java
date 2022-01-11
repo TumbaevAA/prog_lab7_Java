@@ -5,6 +5,19 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Тест Circle
+        Point center = new Point(0,0);
+        Circle c = new Circle();
+        try{
+            c = new Circle(null, 7);
+        }
+        catch (NullPointerException e){
+            System.out.println("Catching NullPointerException when using Circle constructor");
+        }
+        c.input();
+
+
+
         //Тест Square
         Point pForSquare = new Point(8,9);
         Square s = new Square();
