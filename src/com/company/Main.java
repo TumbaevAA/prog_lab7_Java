@@ -5,6 +5,24 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Тест Square
+        Point pForSquare = new Point(8,9);
+        Square s = new Square();
+        try{
+            s = new Square(pForSquare, null, null, null);
+        }
+        catch (NullPointerException e){
+            System.out.println("Catching NullPointerException when using Square constructor");
+        }
+        try{
+            s = new Square(pForSquare, pForSquare, pForSquare, pForSquare);
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("Catch IllegalArgumentException when using Square constructor");
+        }
+        s.input();
+
+
         //Тест Triangle
         Point pForTriangle = new Point(8,9);
         Triangle t = new Triangle();
