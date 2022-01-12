@@ -11,6 +11,7 @@ public class ColorCircle extends Circle{
         this.color = color;
     }
 
+    @Override
     public boolean input() {
         try {
             Point center = new Point();
@@ -30,6 +31,7 @@ public class ColorCircle extends Circle{
         }
     }
 
+    @Override
     public void output(){
         System.out.print("Circle\n----------------------------------------------\n");
         System.out.print("Center");
@@ -40,5 +42,14 @@ public class ColorCircle extends Circle{
         System.out.printf("\n\nCircumference = %f", this.circumference());
         System.out.printf("\nArea = %f", this.area());
         System.out.print("\n----------------------------------------------");
+    }
+
+    @Override
+    public String toString() {
+        return "ColorCircle{" +
+                "center=" + center +
+                ", radius=" + radius +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

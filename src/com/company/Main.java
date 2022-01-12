@@ -8,5 +8,8 @@ public class Main {
         Point center = new Point(0,0);
         ColorCircle colorCircle = new ColorCircle(center, 3, "white");
         colorCircle.output();
+
+        System.out.println("\n" + colorCircle.toString());
+
     }
 }
