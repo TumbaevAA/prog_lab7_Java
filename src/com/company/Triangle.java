@@ -1,7 +1,7 @@
 package com.company;
 
 public class Triangle {
-    private Point firstPoint, secondPoint, thirdPoint;
+    protected Point firstPoint, secondPoint, thirdPoint;
 
     Triangle(){}
 
