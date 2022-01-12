@@ -1,16 +1,13 @@
 package com.company;
 
-public class Triangle {
-    protected Point firstPoint, secondPoint, thirdPoint;
+public class EquilateralTriangle extends Triangle{
 
-    Triangle(){}
-
-    Triangle(Point first, Point second, Point third){
+    public EquilateralTriangle(Point first, Point second, Point third){
         if (first == null || second == null || third == null) throw new NullPointerException();
 
         float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(first);
         if (d1 == 0 || d2 == 0 || d3 == 0 ||                       //Если какие-то точки совпадают - не инициализируем
-                d1 == d2 + d3 || d2 == d1 + d3 || d3 == d1 + d2) { //Если точка лежит на отрезке между двумя другими - не инициализируем
+                d1 != d2 || d1 != d3 || d2 != d3) { //Если длины сторон не равно - не инициализируем
             throw new IllegalArgumentException();
         }
         else{
@@ -20,6 +17,8 @@ public class Triangle {
         }
     }
 
+
+    @Override
     public boolean input(){
         try {
             Point first = new Point(), second = new Point(), third = new Point();
@@ -29,7 +28,7 @@ public class Triangle {
 
             float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(first);
             if (d1 == 0 || d2 == 0 || d3 == 0 ||                       //Если какие-то точки совпадают - не инициализируем
-                    d1 == d2 + d3 || d2 == d1 + d3 || d3 == d1 + d2) { //Если точка лежит на отрезке между двумя другими - не инициализируем
+                    d1 != d2 || d1 != d3 || d2 != d3) { //Если длины сторон не равно - не инициализируем
                 throw new IllegalArgumentException();
             }
 
@@ -44,6 +43,7 @@ public class Triangle {
         }
     }
 
+    @Override
     public void output(){
         System.out.print("Triangle\n----------------------------------------------\n");
         System.out.print("Points\n");
@@ -58,49 +58,29 @@ public class Triangle {
         this.thirdPoint.output();
 
 
-        System.out.print("\n\nLine lengths\n");
-        System.out.printf("first = %f", this.lineLength(1));
-        System.out.printf("\nsecond = %f", this.lineLength(2));
-        System.out.printf("\nthird = %f", this.lineLength(3));
+        System.out.print("\n\nLine length = " + this.lineLength());
 
         System.out.printf("\n\nPerimeter = %f", this.perimeter());
         System.out.printf("\nArea = %f", this.area());
         System.out.print("\n----------------------------------------------");
     }
 
-    public float lineLength(int lineNumber){
-        return switch (lineNumber) {
-            case 1 -> this.firstPoint.distance(this.secondPoint);
-            case 2 -> this.secondPoint.distance(this.thirdPoint);
-            case 3 -> this.thirdPoint.distance(this.firstPoint);
-            default -> -1;
-        };
+    public float lineLength(){
+        return firstPoint.distance(this.secondPoint);
     }
 
+    @Override
     public float perimeter(){
-        float perimeter = 0;
-        for (int i = 1; i < 4; i++) {
-            perimeter += this.lineLength(i);
-        }
-
-        return perimeter;
+        return lineLength()*3;
     }
 
+
+    @Override
     public float area(){
         float semiPerimeter = this.perimeter() / 2;
         return (float) Math.sqrt(semiPerimeter * (semiPerimeter - this.lineLength(1)) *
                 (semiPerimeter - this.lineLength(2)) * (semiPerimeter - this.lineLength(3)));
     }
 
-    public Point getFirstPoint() {
-        return firstPoint;
-    }
 
-    public Point getSecondPoint() {
-        return secondPoint;
-    }
-
-    public Point getThirdPoint() {
-        return thirdPoint;
-    }
 }
