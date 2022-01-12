@@ -2,19 +2,16 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Circle {
-    protected Point center;
-    protected float radius;
+public class ColorCircle extends Circle{
 
-    public Circle(){
+    private String color;
+
+    public ColorCircle(Point center, float radius, String color){
+        super(center, radius);
+        this.color = color;
     }
 
-    public Circle(Point center, float radius){
-        if(center == null) throw new NullPointerException();
-        this.center = center;
-        this.radius = radius;
-    }
-    public boolean input(){
+    public boolean input() {
         try {
             Point center = new Point();
             center.input();
@@ -22,13 +19,12 @@ public class Circle {
             float radius;
             if (scanner.hasNextFloat()) {
                 radius = scanner.nextFloat();
+                color = scanner.nextLine();
                 this.center = center;
                 this.radius = radius;
                 return true;
-            }
-            else throw new IllegalArgumentException();
-        }
-        catch (IllegalArgumentException e){
+            } else throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
             System.out.println("Invalid input");
             return false;
         }
@@ -39,26 +35,10 @@ public class Circle {
         System.out.print("Center");
         this.center.output();
 
-        System.out.printf("\n\nRadius = %f", this.getRadius());
+        System.out.printf("\n\nRadius = %f", radius);
+        System.out.printf("\n\nColor = %s", color);
         System.out.printf("\n\nCircumference = %f", this.circumference());
         System.out.printf("\nArea = %f", this.area());
         System.out.print("\n----------------------------------------------");
-    }
-
-
-    public float area(){
-        return (float) (this.radius * this.radius * 3.1415926535);
-    }
-
-    public float circumference(){
-        return (float) (this.radius * 2 * 3.1415926535);
-    }
-
-    public Point getCenter() {
-        return center;
-    }
-
-    public float getRadius() {
-        return radius;
     }
 }
