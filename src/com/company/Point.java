@@ -2,7 +2,8 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Point {
+public class Point implements IOInterface {
+
     private float x, y;
     private int id;
     private static int count = 0;

@@ -1,6 +1,8 @@
 package com.company;
 
-public class Line {
+public class Line implements IOInterface{
+
+
     private Point startPoint, endPoint;
 
     Line(){}

@@ -1,6 +1,8 @@
 package com.company;
 
-public class Square {
+public class Square implements IOInterface{
+
+
     private Point firstPoint, secondPoint, thirdPoint, fourthPoint;
 
     public Square(){}

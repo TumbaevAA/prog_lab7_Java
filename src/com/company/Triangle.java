@@ -1,6 +1,7 @@
 package com.company;
 
-public class Triangle {
+public class Triangle implements IOInterface{
+
     protected Point firstPoint, secondPoint, thirdPoint;
 
     Triangle(){}

@@ -2,7 +2,9 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Circle {
+public class Circle implements IOInterface {
+
+
     protected Point center;
     protected float radius;
 
