@@ -1,12 +1,14 @@
 package com.company;
 
-public class Triangle implements IOInterface{
+public class Triangle extends GeometricFigure{
 
     protected Point firstPoint, secondPoint, thirdPoint;
 
     Triangle(){}
 
-    Triangle(Point first, Point second, Point third){
+    Triangle(Point first, Point second, Point third, String description){
+        super(description);
+
         if (first == null || second == null || third == null) throw new NullPointerException();
 
         float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(first);
@@ -66,6 +68,7 @@ public class Triangle implements IOInterface{
 
         System.out.printf("\n\nPerimeter = %f", this.perimeter());
         System.out.printf("\nArea = %f", this.area());
+        System.out.println("\nDescription: " + getDescription());
         System.out.print("\n----------------------------------------------");
     }
 

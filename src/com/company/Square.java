@@ -1,13 +1,15 @@
 package com.company;
 
-public class Square implements IOInterface{
+public class Square extends GeometricFigure{
 
 
     private Point firstPoint, secondPoint, thirdPoint, fourthPoint;
 
     public Square(){}
 
-    public Square(Point first, Point second, Point third, Point fourth){
+    public Square(Point first, Point second, Point third, Point fourth, String description){
+        super(description);
+
         if(first == null || second == null || third == null || fourth == null) throw new NullPointerException();
 
         float d1 = first.distance(second), d2 = second.distance(third), d3 = third.distance(fourth), d4 = fourth.distance(first);
@@ -66,6 +68,7 @@ public class Square implements IOInterface{
 
         System.out.printf("\n\nPerimeter = %f", this.perimeter());
         System.out.printf("\nArea = %f", this.area());
+        System.out.println("\nDescription: " + getDescription());
         System.out.print("\n----------------------------------------------");
     }
 

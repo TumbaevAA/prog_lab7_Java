@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Circle implements IOInterface {
+public class Circle implements IOInterface{
 
 
     protected Point center;
