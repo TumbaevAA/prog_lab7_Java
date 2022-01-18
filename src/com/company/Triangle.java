@@ -1,10 +1,15 @@
 package com.company;
 
-public class Triangle extends GeometricFigure{
+public class Triangle extends GeometricFigure implements Cloneable{
 
     protected Point firstPoint, secondPoint, thirdPoint;
 
     Triangle(){}
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     Triangle(Point first, Point second, Point third, String description){
         super(description);
@@ -107,4 +112,11 @@ public class Triangle extends GeometricFigure{
     public Point getThirdPoint() {
         return thirdPoint;
     }
+
+
+    public void setSecondPoint(float x, float y) {
+        this.secondPoint.setX(x);
+        this.secondPoint.setY(y);
+    }
+
 }
