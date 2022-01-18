@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Circle implements IOInterface{
+public class Circle implements IOInterface, Serializable {
 
 
     protected Point center;
@@ -62,5 +63,10 @@ public class Circle implements IOInterface{
 
     public float getRadius() {
         return radius;
+    }
+
+    public void setCenter(float x, float y) {
+        this.center.setX(x);
+        this.center.setY(y);
     }
 }

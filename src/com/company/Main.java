@@ -1,9 +1,33 @@
 package com.company;
 
 
+import java.io.*;
+
 public class Main {
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) throws CloneNotSupportedException, IOException, ClassNotFoundException {
+
+        Point center1 = new Point(0,0);
+
+        Circle circle = new Circle(center1, 9);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream ous = new ObjectOutputStream(baos);
+
+        //Сохраняем состояние объекта и закрываем поток
+        ous.writeObject(circle);
+        ous.close();
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bais);
+
+        Circle circleClone = (Circle)ois.readObject();
+        circleClone.setCenter(5,5);
+        System.out.println("\n\n");
+        circle.output();
+        System.out.println("\n\n");
+        circleClone.output();
+
 
         Point point1 = new Point(0,0), point2 = new Point(1,0), point3 = new Point(1,1);
 
@@ -22,10 +46,6 @@ public class Main {
 
         System.out.println("\n\n");
         cloneTriangle.output();
-
-
-
-
 
 
         Point p1 = new Point(0,0), p2 = new Point(1,0), p3 = new Point(1,1), p4 = new Point(0,1);

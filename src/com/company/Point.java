@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Point implements IOInterface {
+public class Point implements IOInterface, Serializable {
 
     private float x, y;
     private int id;
